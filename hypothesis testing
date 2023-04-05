@@ -1,0 +1,83 @@
+> # Practical 7
+> # Hypothesis Testing
+> # Large sample Test
+> # Z- test
+> # 1) A random sample of 400 chocolate bars is taken showing the
+> # Mean weight 10.2 gm and S.D. 2.25 gm test the hypothesis that 
+> # Mean weight of chocolate bar is 10 gm with l.o.s = 5% 
+> n = 400 # Sample size
+> mx = 10.2 # Sample mean
+> s = 2.25 # Sample S.D.
+> m0 = 10 # Standard value
+> # H0 : m (population mean) = 10                                            
+> # H1 : m != 10  
+> zcal = (mx - m0) / (s / sqrt(n))
+> cat("z calculated =", zcal)
+z calculated = 1.777778> 
+> pv = 2 * (1 - pnorm(abs(zcal))) # Two tailed test           
+> cat("P value =", pv)
+P value = 0.07544036> 
+> # l.o.s = 0.05
+> # Conclusion : p value > l.o.s Therefore accept H0
+> # Mean weight of the chocolate bar is 10 gm
+
+> # 2) Experience has show that 20% of a manufactured product is of 
+> # top quality. In one day's production of 400 articles only 50 are
+> # of the top quality. Test the hypothesis for population proportion.
+> # l.o.s = 5%
+> n = 400
+> p = 50 / 400 # Sample proportion
+> p0 = 20 / 100 # Standard value
+> # H0 : P (Population proportion) = 20 / 100
+> # H1 : P != 20 / 100
+> zcal = (p - p0) / (sqrt(p * (1 - p) / n))
+> cat("z calculated =", zcal)
+z calculated = -4.535574> 
+> pv = 2 * (1 - pnorm(abs(zcal)))                                                
+> cat("P value =", pv)
+P value = 5.744712e-06>
+> # Conclusion : p value < l.o.s, Therefore reject H0
+> # Proportion of top quality products is  not 20%
+
+> # 3) Intelligence test on two groups of girls and boys gave following
+> # Results
+> #              Mean           S.D.      N
+> # Girls        61             2         64
+> # Boys         60             4         100
+> # Is there a significant difference in the mean scores obtained by boys
+> # and girls at 1% l.o.s
+> n1 = 64
+> n2 = 100
+> x1 = 61
+> x2 = 60
+> s1 = 2
+> s2 = 4
+> # H0 : m1 = m2 population means are same
+> # H1 : m1 != m2 population means are not same
+> zcal = (x1 - x2) / (sqrt((s1 ^ 2 / n1) + (s2 ^ 2 / n2)))
+> cat("z calculated =", zcal)
+z calculated = 2.119996> 
+> pv = 2 * (1 - pnorm(abs(zcal)))                                                
+> cat("P value =", pv)
+P value = 0.0340064>
+> # Conclusion : p value > l.o.s, Therefore accept H0
+> # No significant difference in mean score of girls and boys
+
+NOTE: THE FOLLOWING QUESTION IS ALSO IN COST ASSIGNMENT
+> # A machine part was designed withstand an average pressure of 120 units.
+> # A random sample of 100 from a large batch was test and it was found that 
+> # the average pressure which these parts can withstand is 105 units with a 
+> # S.D. of 20 units. Test whether the batch meets the specification? l.o.s = 1%
+> n = 100
+> mx = 105
+> s = 20 
+> m0 = 120
+> # H0 : m = 120
+> # H1 : m < 120
+> zcal = (mx - m0) / (s / sqrt(n))
+> cat("z calculated =", zcal)
+z calculated = -7.5> 
+> pv = (1 - pnorm(abs(zcal)))                                                
+> cat("P value =", pv)
+P value = 3.18634e-14> 
+> # Conclusion : p value < l.o.s, Therefore reject H0
