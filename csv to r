@@ -1,0 +1,46 @@
+> # Practical 8
+> # Importing the data from from CSV to R 
+> D = read.csv(file.choose(), header = TRUE)
+> D
+    Name Statistics Maths
+1  Geeta         45    75
+2  Seeta         24    21
+3   Maya         65    52
+4   Rupa         12    47
+5 Ramesh         52    44
+6 Suresh         20    91
+7 Aditya         48    14
+8   Ajay         69    52
+
+> str(D)  # Structure D
+'data.frame':   8 obs. of  3 variables:
+ $ Name      : Factor w/ 8 levels "Aditya","Ajay",..: 3 7 4 6 5 8 1 2
+ $ Statistics: int  45 24 65 12 52 20 48 69
+ $ Maths     : int  75 21 52 47 44 91 14 52
+
+> x = (D$Statistics)  
+> x
+[1] 45 24 65 12 52 20 48 69
+
+> y = (D$Maths)
+> y
+[1] 75 21 52 47 44 91 14 52
+
+> # Calculate Coefficient of Skewness for x
+> Q1 = quantile(x,0.25)
+> Q2 = quantile(x,0.5)
+> Q3 = quantile(x,0.75)
+> sk = (Q3 + Q1 - 2 * Q2) / (Q3 - Q1)
+> cat("Co-efficient of skewness = ", sk)
+Co-efficient of skewness =  -0.4573643> 
+
+> # Calculate co=efficient of kurtosis for y
+> m = mean(y)
+> n = length(y)
+> m2 = sum((x - m)^2)/n  
+> m4 = sum((x - m)^4)/n  
+> k = (m4 / (m2 ^2)) - 3
+> cat("Co-efficient of kurtosis = ", k)
+Co-efficient of kurtosis =  -0.8977026> 
+> # x is negatively skewed
+> # y is platykurtic
