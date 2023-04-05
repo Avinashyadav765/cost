@@ -1,0 +1,128 @@
+> # Practical 6
+> # Correlation and regression
+> # Following are the marks obtained by 10 students in two subjects x and y 
+> # x: 34, 56, 78, 21, 45, 32, 78, 53, 65, 54
+> # y: 32, 45, 62, 27, 49, 59, 90, 76, 43, 65
+> # 1) Draw a scattered diagram 2) Find the correlation co-efficient
+> x = c(34, 56, 78, 21, 45, 32, 78, 53, 65, 54)
+> y = c(32, 45, 62, 27, 49, 59, 90, 76, 43, 65)
+> plot(x, y, main="Scattered Diagram", xlab="Marks in x", ylab="Marks in y")
+> r = cor(x, y)
+> cat("Correlation Co-efficient between x and y =", r)
+Correlation Co-efficient between x and y = 0.6511619> 
+> x = c(2, 4, 6, 8, 10, 12)
+> y = c(11, 19, 27, 35, 43, 51)
+> # Draw line of regression y on x and x on y
+> # y on x
+> lm(y ~ x) # Linear model y on x (y = a + bX)
+
+Call:
+lm(formula = y ~ x)
+
+Coefficients:
+(Intercept)            x  
+          3            4  
+
+> co = coef(lm(y ~ x))
+> co
+(Intercept)           x 
+          3           4 
+> mco = matrix(co) # Matrix of co-efficients
+> mco
+     [,1]
+[1,]    3
+[2,]    4
+> a = mco[1, 1]
+> a
+[1] 3
+> b = mco[2, 1]
+> b
+[1] 4
+> # Find the value of y if x = 14
+> x1 = 15
+> y1 = a + b * x1
+> y1
+[1] 63
+> x = c(2, 4, 6, 8, 10, 12)
+> y = c(11, 19, 27, 35, 43, 51)
+>  lm(x ~ y) # Linear model x on y (x = al + blY)
+
+Call:
+lm(formula = x ~ y)
+
+Coefficients:
+(Intercept)            y  
+      -0.75         0.25  
+
+> co = coef(lm(x ~ y))
+> mco = matrix(co)
+> a1 = mco[1, 1]
+> a1
+[1] -0.75
+> b1 = mco[2, 1]
+> b1
+[1] 0.25
+> # Find the value of x if y in 63
+> y1 = 63
+> x1 = a1 + b1 * y1
+> x1
+[1] 15
+> # x : 15, 26, 20, 28, 30, 35, 40, 45
+> # y : 82, 99, 92, 107, 125, 135, 145, 160
+> # Find y on x and x on y equation
+> # Find all estimated values of y
+> # Draw a graph showing x, y plot and line of regression y  on x 
+> x = c( 15, 26, 20, 28, 30, 35, 40, 45)
+> y = c( 82, 99, 92, 107, 125, 135, 145, 160)
+> yox = lm(y ~ x)
+> co = coef(yox)
+> mco = matrix(co)
+> a = mco[1, 1]
+> a
+[1] 37.16316
+> b = mco[2, 1]
+> b
+[1] 2.71002
+> # Line of regression y on x is y = 37.16316 + 2.71002 x
+> esty = fitted(yox)
+> data.frame(x, y, esty)
+   x   y      esty
+1 15  82  77.81346
+2 26  99 107.62367
+3 20  92  91.36355
+4 28 107 113.04371
+5 30 125 118.46375
+6 35 135 132.01385
+7 40 145 145.56395
+8 45 160 159.11405
+> x = c( 15, 26, 20, 28, 30, 35, 40, 45)
+> y = c( 82, 99, 92, 107, 125, 135, 145, 160)
+> plot(x, y, pch = "+");
+> points(x, esty, pch = "+");lines(x, esty)
+> # x on y
+>  x = c( 15, 26, 20, 28, 30, 35, 40, 45)
+>  y = c( 82, 99, 92, 107, 125, 135, 145, 160)
+> # x on y
+> xoy = lm(x ~ y)
+> co = coef(xoy)
+> mco = matrix(co)
+> a1 = mco[1, 1]
+> a1
+[1] -12.21571
+> b1 = mco[2, 1]
+> b1
+[1] 0.3563235
+> # Line of regression x on y is x = -12.21571 + 0.3563235 y
+> estx = fitted(xoy)
+> data.frame(x, y, estx)
+   x   y     estx
+1 15  82 17.00281
+2 26  99 23.06031
+3 20  92 20.56605
+4 28 107 25.91090
+5 30 125 32.32472
+6 35 135 35.88796
+7 40 145 39.45119
+8 45 160 44.79605
+> plot(x, y, main = "x on y", pch = "+");
+> points(estx, y, pch = "+");lines(estx, y)
