@@ -1,0 +1,84 @@
+Note: Write questions from notebook
+> # Practical 9
+> # Chi-Square test, t - test, F - test
+> # Chi-Square test
+> # Association of attributes
+> #                    Non-Smokers        Moderate smokers Heavy smokers
+> # Hypertension       21                 36               30
+> # No Hypertension    48                 26               19
+> # los = 5%
+> a = c(21, 36, 30)
+> b = c(48, 26, 19)
+> D = data.frame(a, b)
+> # H0 : No association between smoking habit and hypertension
+> # H1 : There is association between smoking habit and hypertension
+> chisq.test(D)
+
+        Pearson's Chi-squared test
+
+data:  D
+X-squared = 14.464, df = 2, p-value = 0.0007232
+> # p value < los, Therefore reject H0
+> # There is association between smoking habit and hypertension
+
+> # Q2) Following table gives the no. of aircraft accidents that occurs
+> #     during the days of week find whether the accidents are evenly
+> #     distributed
+> #     S    M    T    W     TH     F     ST
+> #     14   16   8    12    11     9     14
+> # H0 : The data is evenly distributed 
+> # H1 : The data is not evenly distributed 
+> x = c(14, 16, 8, 12, 11, 9, 14)
+> chisq.test(x)
+
+        Chi-squared test for given probabilities
+
+data:  x
+X-squared = 4.1667, df = 6, p-value = 0.6541
+> # los = 5%
+> # P value > los, Therefore accept H0
+> # Conclusion : Accidents are evenly distributed
+
+
+> # t - test
+> # Type 17 20.50 24.50 23.06 29.98 30.37 23.38
+> # Type 51:24.86 26.86 28.19 30.75 29.97 22.04
+> a = c(20.50, 24.50, 23.06, 29.98, 30.37, 23.38)
+> b = c(24.86, 26.86, 28.19, 30.75, 29.97, 22.04)
+> D = data.frame(a, b)
+> t.test(D)
+
+        One Sample t-test
+
+data:  D
+t = 25.152, df = 11, p-value = 4.515e-11
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 23.91189 28.49811
+sample estimates:
+mean of x 
+   26.205 
+> # H0 : m1 = m2
+> # H1 : m1 != m2
+> # p value < los(5%), Therefore accpet H0
+
+
+> a = c(10, 6, 16, 17, 13, 12, 8, 14, 15, 9)
+> b = c(7, 13, 22, 15, 12, 14, 18, 21, 23, 10, 17)
+> # H0 : s1^2=s2^2
+> # H1 : s1^2!=s2^2
+> var.test(a, b)
+
+        F test to compare two variances
+
+data:  a and b
+F = 0.51175, num df = 9, denom df = 10, p-value = 0.328
+alternative hypothesis: true ratio of variances is not equal to 1
+95 percent confidence interval:
+ 0.1354199 2.0284958
+sample estimates:
+ratio of variances 
+         0.5117469 
+> # lost = 5%
+> # p value < los, reject H0
+> # There is difference in variances
