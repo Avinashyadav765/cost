@@ -1,0 +1,21 @@
+> # Probability Distribution
+> # Binomial Distribution
+> # Parameters of Binomial Distribution are n,p
+> # n=number of trials
+> # p=probability of success
+> # dbinom (x,n,p) x is number whose probability is to be calculated
+> # this gives probability of x
+> # find the probability of getting 6 heads when a coin is tossed 10 times
+> n=10
+> p=0.5
+> x=6
+> d=dbinom(6,10,0.5)
+> cat("Probability of getting 6 heads=",d)
+Probability of getting 6 heads= 0.2050781> 
+> # pbinom(x,n,p)
+> # This function gives cumulative probability
+> # it gives probability <=x
+> # Find the probability of getting 5 or less heads when coin is tossed 10 times
+> p=pbinom(5,10,0.5)
+> cat("Probability of getting 5 or less heads=",p)
+Probability of getting 5 or less heads= 0.6230469> 
