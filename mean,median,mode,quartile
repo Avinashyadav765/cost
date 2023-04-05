@@ -1,0 +1,122 @@
+x=c(2,3,5,6,2,4,8,9,10,8,6,7,7,11)
+> cat("Arithmetic Mean of x=", mean(x))
+Arithmetic Mean of x= 6.285714> 
+> cat("Median of the data=", median(x))
+Median of the data= 6.5> 
+> cat("Mode of the data=", 3*median(x)-2*mean(x))
+Mode of the data= 6.928571> 
+> x=c(2,3,5,6,2,4,8,9,10,8,6,7,7,11)
+> cat("Q1=", quantile(x,0.25))
+Q1= 4.25> 
+> cat("Q3=", quantile(x,0.75))
+Q3= 8> 
+> cat("D6=", quantile(x,0.6))
+D6= 7> 
+> cat("P45=", quantile(x,0.45))
+P45= 6>
+> x=c(2,3,5,6,2,4,8,9,10,8,6,7,7,11)
+> l=max(x)
+> s=min(x)
+> cat("Range of x=",l-s)
+Range of x= 9> 
+> cat("Co-eff. of Range=", (l-s)/(l+s))
+Co-eff. of Range= 0.6923077> 
+> cat("Q.D.=",(Q3-Q1)/2)
+Q.D.= 1.875> 
+> cat("Co-eff. of Q.D=", (Q3-Q1)/(Q3+Q1))
+Co-eff. of Q.D= 0.3061224> 
+> x=c(2,3,5,6,2,4,8,9,10,8,6,7,7,11)
+> cat("Variance of x=", var(x))
+Variance of x= 8.065934> 
+> cat("Co-eff. of vari.=", sd(x)*100/mean(x))
+Co-eff. of vari.= 45.18275> 
+> m=mean(x)
+> n=length(x)
+> cat("Mean deviation of the data=", sum(abs(x-m)/n))
+Mean deviation of the data= 2.285714> 
+> x=c(2,3,5,6,2,4,8,9,10,8,6,7,7,11)
+> m=mean(x)
+> n=length(x)
+> cat("m1'=", sum(x)/n)
+m1'= 6.285714> 
+> cat("m2'=", sum(x^2)/n)
+m2'= 47> 
+> cat("m3'=", sum(x^3)/n)
+m3'= 388.1429> 
+> cat("m4'=", sum(x^4)/n)
+m4'= 3413>  
+> x=c(2,3,5,6,2,4,8,9,10,8,6,7,7,7)
+> m=mean(x)
+> n=length(x)
+> cat("m1=", sum(x-m)/n)
+m1= 0> 
+> cat("m2=", sum((x-m)^2)/n)
+m2= 5.857143> 
+> cat("m3=", sum((x-m)^3)/n)
+m3= -3.857143> 
+> cat("m4=", sum((x-m)^4)/n)
+m4= 70.14286> 
+
+> # Ungrouped Frequency distribution
+> # x : 2 3 5 6 8 10
+> # f : 1 3 4 5 2 1
+> # Calculate Arithmetic mean for above data
+> x=c(2,3,5,6,8,10)  #obs
+> f=c(1,3,4,5,2,1)   #freq
+> m=sum(x*f)/sum(f)
+> cat("Arithmetic mean of the data=", m)
+Arithmetic mean of the data= 5.4375> 
+> y=rep(x,f)
+> mean(y)
+[1] 5.4375
+> median(y)
+[1] 5.5
+> sd(y)
+[1] 2.096624
+> quantile(y,0.25)   #Q1
+25% 
+4.5 
+
+Note : Program given below will come for exam
+
+> # Grouped Frequency Distribution
+> # Calculate Mean, Median and Mode for the data
+> # classes 0-10 10-20 20-30 30-40 40-50 50-60 60-70 70-80
+> # Freq      6    8     15    24    19    14    12    7
+> lb=seq(0,70,10)    #lower bounds
+> ub=seq(10,80,10)    #upper bounds
+> h=10    #class length
+> x=(lb+ub)/2    #class marks
+> f=c(6,8,15,24,19,14,12,7)
+> n=sum(f)
+> m=sum(f*x)/n
+> cat("Arithmetic mean of the data=", m)
+Arithmetic mean of the data= 40.90476> 
+> # classes 0-10 10-20 20-30 30-40 40-50 50-60 60-70 70-80
+> # Freq      6    8     15    24    19    14    12    7
+> lb=seq(0,70,10)    #lower bounds
+> ub=seq(10,80,10)    #upper bounds
+> h=10    #class length
+> n=sum(f)
+> lcf=cumsum(f)    #less than c.f.
+> mc=min(which(lcf>=n/2))     #Median class
+> me=lb[mc]+(n/2-lcf[mc-1])*h/f[mc]
+> # lb[mc]=lower limit of median class
+> # lcf[mc-1]=lcf of class before median class
+> # f[mc]= frequency of median class
+> cat("Median of the data=",me)
+Median of the data= 39.79167> 
+> # classes 0-10 10-20 20-30 30-40 40-50 50-60 60-70 70-80
+> # Freq      6    8     15    24    19    14    12    7
+> lb=seq(0,70,10)    #lower bounds
+> ub=seq(10,80,10)    #upper bounds
+> h=10    #class length
+> n=sum(f)
+> moc=which(f==max(f))    #modal class
+> mo=lb[moc]+(f[moc]-f[moc-1])*h/(2*f[moc]-f[moc-1]-f[moc+1])
+> # lb[moc]=lower bound of modal class
+> # f[moc]=freq of modal class
+> # f[moc-1]=freq of class before modal class
+> # f[moc+1]=freq of class after modal class
+> cat("Mode of the given data=",mo)
+Mode of the given data= 36.42857> 
